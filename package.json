@@ -12,20 +12,37 @@
     "@types/react-dom": "^17.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
     "typescript": "^4.1.2",
     "web-vitals": "^1.0.1"
   },
-  "main": "src/electron-starter.js",
+  "main": "src/electron.js",
   "homepage": "./",
   "scripts": {
     "electron-dev": "set ELECTRON_START_URL=http://localhost:3000 && electron .",
-    "dev" : "nf start",
-    "electron": "electron .",
+    "dev": "nf start",
+    "electron": "electron . --dev",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "pack": "electron --dir",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "extends": null,
+    "appId": "com.kunkel",
+    "productName": "KunkelApp",
+    "files": [
+      "build/**/*",
+      "src/assets/*",
+      "src/electron.js",
+      "src/electron-wait-react.js"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "src/assets/logo.png",
+      "legalTrademarks": "All rights reserved."
+    }
   },
   "eslintConfig": {
     "extends": [
@@ -47,6 +64,8 @@
   },
   "devDependencies": {
     "electron": "^13.1.4",
-    "foreman": "^3.0.1"
+    "electron-builder": "^22.11.7",
+    "foreman": "^3.0.1",
+    "react-scripts": "4.0.3"
   }
 }
