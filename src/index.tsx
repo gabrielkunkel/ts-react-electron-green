@@ -17,9 +17,11 @@ const store: Store<MessageState, MessageAction> & {
 const rootElement = document.getElementById('root');
 
 render(
-    <Provider store={store}>
-      <App />
-    </Provider>,
+    <React.StrictMode>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </React.StrictMode>,
   rootElement
 );
 
