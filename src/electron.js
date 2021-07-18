@@ -1,14 +1,25 @@
+const { default: installExtension, REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS } = require('electron-devtools-installer');
 const electron = require('electron');
 // Module to control application life.
 const app = electron.app;
-// Module to create native browser window.
-const BrowserWindow = electron.BrowserWindow;
 
 const path = require('path');
 const url = require('url');
 
 const args = process.argv.slice(1);
 const isDev = args.some(x => x === '--dev');
+
+app.whenReady().then(() => {
+
+    const extensions = [REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS]
+
+    installExtension(extensions)
+        .then((name) => console.log(`Added Extension:  ${name}`))
+        .catch((err) => console.log('An error occurred: ', err));
+});
+
+// Module to create native browser window.
+const BrowserWindow = electron.BrowserWindow;
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.

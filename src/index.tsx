@@ -2,6 +2,7 @@ import * as React from 'react';
 import { render } from 'react-dom';
 import { createStore, applyMiddleware, Store } from "redux";
 import { Provider } from "react-redux";
+import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from "redux-thunk";
 import './index.css';
 
@@ -12,7 +13,7 @@ import { DispatchType, MessageAction, MessageState } from './models/messages';
 
 const store: Store<MessageState, MessageAction> & {
   dispatch: DispatchType;
-} = createStore(reducer, applyMiddleware(thunk));
+} = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));
 
 const rootElement = document.getElementById('root');
 

@@ -22,9 +22,6 @@ export const AddMessage: React.FC<Props> = ({ saveMessage }) => {
   )
 
   const handleMessageData = (e: React.FormEvent<HTMLInputElement>) => {
-
-    console.log(message);
-
     setMessage(Object.assign(message, { text: e.currentTarget.value }))
   }
 
